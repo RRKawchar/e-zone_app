@@ -1,4 +1,8 @@
-import 'package:e_zone/core/res/constants/constants.dart';
+import 'package:e_zone/view/home/widgets/drawer_widget.dart';
+import 'package:e_zone/view/home/widgets/home_appbar_widget.dart';
+import 'package:e_zone/view/home/widgets/home_body_widget.dart';
+import 'package:e_zone/view/home/widgets/sale_view_widget.dart';
+import 'package:e_zone/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,88 +14,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final homeViewModel = Get.find<HomeViewModel>();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       key: _scaffoldKey,
-      drawer: Drawer(
-        // Add the Drawer widget here
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_circle),
-              title: const Text('Item 1'),
-              onTap: () {
-                // Define the action when Item 1 is tapped
-                Navigator.pop(context); // Close the drawer
-                // Add your navigation logic here
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Item 2'),
-              onTap: () {
-                // Define the action when Item 2 is tapped
-                Navigator.pop(context); // Close the drawer
-                // Add your navigation logic here
-              },
-            ),
-            // Add more ListTiles for additional menu items
-          ],
-        ),
-      ),
+      drawer: const DrawerWidget(),
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              children: [
-                Container(
-                  height: 50,
-                  width: 80,
 
-                  child: IconButton(
-                      onPressed: () {
-                        _scaffoldKey.currentState?.openDrawer();
-                      },
-                      icon: const Icon(Icons.menu)),
-                ),
-            const SizedBox(width: 60,),
-                Container(
-                    height: 50,
-                    width: 100,
-                    child: Image.asset(appLogo,)),
-                const SizedBox(width: 60,),
-                Container(
-                  height: 50,
-                  width: 80,
-
-                  child: IconButton(
-                      onPressed: () {
-
-                      },
-                      icon: const Icon(Icons.search,size: 30,)),
-                ),
-
-
-              ],
-            )
-
+            /// Home Drawer Logo And search iconButton
+           HomeAppbarWidget(scaffoldKey: _scaffoldKey),
+            const Divider(),
+           /// Super sale text and view all
+           const SaleViewWidget(),
+           /// Home body items
+           HomeBodyWidget(homeViewModel: homeViewModel)
           ],
         ),
       ),

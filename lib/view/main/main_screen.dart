@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class MainScreen extends StatelessWidget {
    MainScreen({Key? key}) : super(key: key);
 
-  final mainViewModel = Get.put(MainViewModel());
+  final mainViewModel = Get.find<MainViewModel>();
 
   @override
   Widget build(BuildContext context) {

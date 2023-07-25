@@ -1,3 +1,4 @@
+import 'package:e_zone/core/binding/app_binding.dart';
 import 'package:e_zone/core/res/app_theme/app_theme.dart';
 import 'package:e_zone/core/res/constants/constants.dart';
 import 'package:e_zone/core/res/routes/app_routes.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.system,
+       initialBinding: AppBindings(),
        getPages: AppRoutes.appRoutes()
     );
   }
