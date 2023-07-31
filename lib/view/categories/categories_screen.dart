@@ -1,54 +1,78 @@
+import 'package:e_zone/core/res/app_color/app_color.dart';
+import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/view/categories/widgets/electronics_widget.dart';
+import 'package:e_zone/view/categories/widgets/jewelery_widget.dart';
+import 'package:e_zone/view/categories/widgets/mens_cloth_widget.dart';
+import 'package:e_zone/view/categories/widgets/women_cloth_widget.dart';
 import 'package:e_zone/view_model/categories_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CategoriesTabBar extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
+  const CategoriesScreen({super.key});
+
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
   final categoryViewModel = Get.find<CategoriesViewModel>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(
-        () => categoryViewModel.categories.isNotEmpty
-            ? DefaultTabController(
-                length: categoryViewModel.categories.length,
-                child: Scaffold(
-
-                  body: Column(
-                    children: [
-                      const SizedBox(height: 30,),
-                      TabBar(
-                        isScrollable: true,
-                        tabs: categoryViewModel.categories
-                            .map((category) => Container(
-                           color: Colors.black,
-                            width: 150,
-                            child: Tab(text: category)))
-                            .toList(),
+        () {
+          if (categoryViewModel.isLoading.value) {
+            return kCircularProgressIndicator();
+          } else if (categoryViewModel.electronicsList.isEmpty) {
+            return kCircularProgressIndicator();
+          } else if (categoryViewModel.jeweleryList.isEmpty) {
+            return kCircularProgressIndicator();
+          } else if (categoryViewModel.mensClothingList.isEmpty) {
+            return kCircularProgressIndicator();
+          } else if (categoryViewModel.womenList.isEmpty) {
+            return kCircularProgressIndicator();
+          } else {
+            return DefaultTabController(
+              length: categoryViewModel.categories.length,
+              child: Scaffold(
+                body: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    TabBar(
+                      isScrollable: true,
+                      tabs: categoryViewModel.categories
+                          .map(
+                            (category) => Container(
+                              width: 150,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColor.primaryColor,
+                              ),
+                              child: Tab(text: category),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        children: [
+                          ElectronicsWidget(),
+                          JeweleryWidget(),
+                          MensClothWidget(),
+                          WomenClothWidget(),
+                        ],
                       ),
-                      Expanded(
-                        child: TabBarView(
-                          children: categoryViewModel.categories
-                              .map(
-                                (category) => buildCategoryScreen(category),
-                              )
-                              .toList(),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
-            : const Center(
-                child: CircularProgressIndicator(),
               ),
+            );
+          }
+        },
       ),
-    );
-  }
-
-  Widget buildCategoryScreen(String category) {
-    return Center(
-      child: Text('Displaying products for $category'),
     );
   }
 }

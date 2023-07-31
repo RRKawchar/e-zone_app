@@ -2,13 +2,18 @@
 
 import 'package:e_zone/core/res/components/custom_network_image.dart';
 import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/model/product_model.dart';
 import 'package:e_zone/view/home/widgets/rating_widget.dart';
+import 'package:e_zone/view/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeCardItems extends StatelessWidget {
- final productList;
-  const HomeCardItems({Key? key, this.productList,}) : super(key: key);
+class SingleCardItems extends StatelessWidget {
+  final ProductModel productList;
+  const SingleCardItems({
+    Key? key,
+    required this.productList,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,41 +23,51 @@ class HomeCardItems extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-
+              Get.to(ProductDetailsScreen(productModel: productList));
             },
             child: Container(
               padding: const EdgeInsets.all(10),
-              height:240,
-              width: Get.height,
+              height: 240,
+              width: Get.width,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: CustomNetworkImage(image:productList.image.toString()),
+              child: CustomNetworkImage(
+
+                image: productList.image.toString(),
+              ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: StarRatingWidget(rating: productList.rating!.rate),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: CustomText(
-              text:productList.title.toString(),maxLines: 2,fontWeight: FontWeight.bold,
+              text: productList.title.toString(),
+              maxLines: 2,
+              fontWeight: FontWeight.bold,
               size: 18,
             ),
           ),
-          const SizedBox(height: 5,),
-
+          const SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CustomText(text:"\$${productList.price}",size: 18,color: Colors.red,),
+            child: CustomText(
+              text: "\$${productList.price}",
+              size: 18,
+              color: Colors.red,
+            ),
           ),
         ],
       ),
     );
   }
-
 }

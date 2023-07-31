@@ -10,7 +10,7 @@ static String sortProductApi(String sort)=>"$baseApiUrl/products?sort=$sort";
 
 /// get product category
 static const String productsCategories="$baseApiUrl/products/categories";
-static  String specificCategory(String categoryName)=>"$baseApiUrl/products/$categoryName";
+static  String specificCategory(String categoryName)=>"$baseApiUrl/products/category/$categoryName";
 
 /// Add Products
 static const String addProductApi="$baseApiUrl/products";

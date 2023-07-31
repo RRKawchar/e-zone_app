@@ -7,7 +7,7 @@ class MainViewModel extends GetxController{
 
   List<Widget> pages=[
      HomeScreen(),
-     CategoriesTabBar(),
+     CategoriesScreen(),
     const Text("Favorite"),
     const Text("Users")
   ];

@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 
 
@@ -21,4 +22,10 @@ import 'package:flutter/foundation.dart';
      if(kDebugMode){
        print(message);
      }
+ }
+
+
+ /// Circular Progress Indicator
+ kCircularProgressIndicator(){
+     return const Center(child: CircularProgressIndicator(),);
  }

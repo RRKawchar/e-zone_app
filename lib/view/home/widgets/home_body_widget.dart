@@ -1,4 +1,4 @@
-import 'package:e_zone/view/home/widgets/home_card_items.dart';
+import 'package:e_zone/core/res/components/single_card_items.dart';
 import 'package:e_zone/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,16 +16,16 @@ class HomeBodyWidget extends StatelessWidget {
           }
           return GridView.builder(
             padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-            itemCount: 20,
+            itemCount: homeViewModel.productList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 10.0,
+              crossAxisSpacing: 8.0,
               mainAxisSpacing: 4.0,
               mainAxisExtent: 350,
             ),
             itemBuilder: (BuildContext context, int index) {
               final productList=homeViewModel.productList[index];
-              return HomeCardItems(productList: productList,);
+              return SingleCardItems(productList: productList,);
             },
           );
         })
