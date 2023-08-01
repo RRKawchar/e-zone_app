@@ -120,6 +120,7 @@ class CategoriesViewModel extends GetxController {
       isLoading(false);
     }
   }
+
   void womenProduct(String category) async {
     try {
       isLoading(true);

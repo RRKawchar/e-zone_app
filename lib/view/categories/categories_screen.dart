@@ -1,5 +1,5 @@
-import 'package:e_zone/core/res/app_color/app_color.dart';
 import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/view/categories/widgets/category_tabbar_widget.dart';
 import 'package:e_zone/view/categories/widgets/electronics_widget.dart';
 import 'package:e_zone/view/categories/widgets/jewelery_widget.dart';
 import 'package:e_zone/view/categories/widgets/mens_cloth_widget.dart';
@@ -39,23 +39,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               child: Scaffold(
                 body: Column(
                   children: [
-                    const SizedBox(height: 30),
-                    TabBar(
-                      isScrollable: true,
-                      tabs: categoryViewModel.categories
-                          .map(
-                            (category) => Container(
-                              width: 150,
-                              height: 40,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColor.primaryColor,
-                              ),
-                              child: Tab(text: category),
-                            ),
-                          )
-                          .toList(),
+                    const SizedBox(height: 35),
+
+                    /// here TabBar
+                    CategoryTabBarWidget(
+                      categoriesViewModel: categoryViewModel,
                     ),
+
+                    const SizedBox(height: 10),
                     Expanded(
                       child: TabBarView(
                         children: [

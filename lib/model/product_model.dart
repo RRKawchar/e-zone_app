@@ -17,12 +17,12 @@ class ProductModel {
       this.rating});
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    title = json['title'];
-    price = json['price']?.toDouble();
-    description = json['description'];
-    category = json['category'];
-    image = json['image'];
+    id = json['id']??"";
+    title = json['title']??"";
+    price = json['price']?.toDouble()??"";
+    description = json['description']??"";
+    category = json['category']??"";
+    image = json['image']??"";
     rating = json['rating'] != null ? Rating.fromJson(json['rating']) : null;
   }
 

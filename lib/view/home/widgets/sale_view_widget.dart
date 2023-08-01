@@ -1,8 +1,12 @@
 import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SaleViewWidget extends StatelessWidget {
-  const SaleViewWidget({Key? key}) : super(key: key);
+   SaleViewWidget({Key? key}) : super(key: key);
+
+  final homeViewModel=Get.find<HomeViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +20,26 @@ class SaleViewWidget extends StatelessWidget {
             size: 27,
             fontWeight: FontWeight.bold,
           ),
-          CustomText(
-            text: 'View All',
-            size: 18,
-          ),
+
+
+         Obx((){
+           return Padding(
+             padding: const EdgeInsets.all(0.0),
+             child: DropdownButton<String>(
+               value: homeViewModel.selectedSort.value,
+               onChanged: (value) {
+                 homeViewModel.updateSelectedLimit(value);
+               },
+               items: ['asc','desc'].map((sort) {
+                 return DropdownMenuItem<String>(
+                   value: sort,
+                   child: Text(sort),
+                 );
+               }).toList(),
+             ),
+           );
+         }),
+
         ],
       ),
     );

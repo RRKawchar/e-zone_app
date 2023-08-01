@@ -4,7 +4,7 @@ class ApiEndpoint{
 static const String baseApiUrl="https://fakestoreapi.com";
 static const String productApi="$baseApiUrl/products";
 static String searchByProductId(int id)=>"$baseApiUrl/products/$id";
-static String limitProductApi(int limit)=>"$baseApiUrl/products?limit=$limit";
+static String limitProductApi(String limit)=>"$baseApiUrl/products?limit=$limit";
 static String sortProductApi(String sort)=>"$baseApiUrl/products?sort=$sort";
 
 

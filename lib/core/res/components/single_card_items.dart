@@ -27,14 +27,13 @@ class SingleCardItems extends StatelessWidget {
             },
             child: Container(
               padding: const EdgeInsets.all(10),
-              height: 240,
+              height: 220,
               width: Get.width,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
               ),
               child: CustomNetworkImage(
-
                 image: productList.image.toString(),
               ),
             ),
@@ -51,19 +50,32 @@ class SingleCardItems extends StatelessWidget {
             child: CustomText(
               text: productList.title.toString(),
               maxLines: 2,
-              fontWeight: FontWeight.bold,
-              size: 18,
+              size: 15,
             ),
-          ),
-          const SizedBox(
-            height: 5,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: CustomText(
-              text: "\$${productList.price}",
-              size: 18,
-              color: Colors.red,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: "\$${productList.price}",
+                  size: 18,
+                  color: Colors.red,
+                ),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.edit,
+                      size: 22,
+                    )),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.delete,
+                      size: 22,
+                    )),
+              ],
             ),
           ),
         ],

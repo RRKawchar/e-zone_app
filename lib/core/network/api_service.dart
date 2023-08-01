@@ -17,6 +17,22 @@ class ApiService {
     return response;
   }
 
+  static postRequest({required String url, required var body}) async {
+    if (!await checkInternet) {
+      throw noInternetMessage;
+    }
+    var headers = {'Content-Type': 'application/json'};
+
+    http.Response response = await http.post(
+      Uri.parse(url),
+      body: jsonEncode(body),
+      headers: headers,
+    );
+    return response;
+  }
+
+
+
   static handleResponse(http.Response response) async {
     try {
       if (!await checkInternet) {
@@ -42,31 +58,25 @@ class ApiService {
         }
 
         throw msg;
-      }else if(response.statusCode==404){
+      } else if (response.statusCode == 404) {
         throw "Page Not Found!";
-      }else if(response.statusCode==500){
+      } else if (response.statusCode == 500) {
         throw "Server Error";
-      }else{
-        
+      } else {
         kPrint("Error Code : ${response.statusCode}");
         kPrint("Error Response : ${response.body}");
 
         String msg = "Something went wrong";
 
         throw msg;
-
       }
-    }on SocketException catch (_) {
-   throw noInternetMessage;
-    }on FormatException catch(_){
+    } on SocketException catch (_) {
+      throw noInternetMessage;
+    } on FormatException catch (_) {
       throw "Bad Response Format";
-
-    }catch(e){
+    } catch (e) {
       kPrint(e.toString());
       throw e.toString();
     }
   }
-
-
-
 }
