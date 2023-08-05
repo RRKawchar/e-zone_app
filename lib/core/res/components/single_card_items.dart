@@ -3,6 +3,7 @@
 import 'package:e_zone/core/res/components/custom_network_image.dart';
 import 'package:e_zone/core/res/components/custom_text.dart';
 import 'package:e_zone/model/product_model.dart';
+import 'package:e_zone/view/add_product/product_add_screen.dart';
 import 'package:e_zone/view/home/widgets/rating_widget.dart';
 import 'package:e_zone/view/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,18 @@ class SingleCardItems extends StatelessWidget {
                   color: Colors.red,
                 ),
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        ProductAddScreen(
+                          id: productList.id,
+                          title: productList.title,
+                          price: productList.price.toString(),
+                          category: productList.category,
+                          description: productList.description,
+                          image: productList.image,
+                        ),
+                      );
+                    },
                     icon: const Icon(
                       Icons.edit,
                       size: 22,

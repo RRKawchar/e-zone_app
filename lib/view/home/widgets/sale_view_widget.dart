@@ -28,7 +28,7 @@ class SaleViewWidget extends StatelessWidget {
              child: DropdownButton<String>(
                value: homeViewModel.selectedSort.value,
                onChanged: (value) {
-                 homeViewModel.updateSelectedLimit(value);
+                 homeViewModel.updateSelectedSort(value);
                },
                items: ['asc','desc'].map((sort) {
                  return DropdownMenuItem<String>(

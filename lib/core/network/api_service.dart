@@ -17,7 +17,7 @@ class ApiService {
     return response;
   }
 
-  static postRequest({required String url, required var body}) async {
+  static postRequest({required String url, required Map<String,dynamic> body}) async {
     if (!await checkInternet) {
       throw noInternetMessage;
     }

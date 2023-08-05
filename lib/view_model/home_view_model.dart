@@ -9,6 +9,15 @@ class HomeViewModel extends GetxController {
   var productList = <ProductModel>[].obs;
   var selectedSort = 'asc'.obs;
 
+  Map<String, dynamic> body = {
+    'title': 'test product',
+    'price': 13.5,
+    'description': 'lorem ipsum set',
+    'image':
+        'https://w7.pngwing.com/pngs/724/729/png-transparent-calculator-calculator-electronics-calculator-technology-thumbnail.png',
+    'category': 'electronic'
+  };
+
   @override
   void onInit() {
     fetchProduct();
@@ -42,28 +51,10 @@ class HomeViewModel extends GetxController {
     }
   }
 
-  void updateSelectedLimit(String? value) {
+  void updateSelectedSort(String? value) {
     if (value != null) {
       selectedSort.value = value;
       fetchProduct();
     }
-  }
-
-
-  void addProduct({required var body})async{
-     try{
-       isLoading(true);
-       await ApiService.handleResponse(
-           await ApiService.postRequest(url: ApiEndpoint.addProductApi, body: body)
-       );
-     }catch(e){
-       isLoading(false);
-       kPrint(e.toString());
-     }finally{
-       isLoading(false);
-     }
-
-
-
   }
 }

@@ -1,11 +1,13 @@
 import 'package:e_zone/core/res/app_color/app_color.dart';
 import 'package:e_zone/core/res/components/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
-  const CustomButton({Key? key, required this.text, required this.onTap,}) : super(key: key);
+  final bool? isResponsive;
+  const CustomButton({Key? key, required this.text, required this.onTap, this.isResponsive=false,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class CustomButton extends StatelessWidget {
         onTap:onTap,
         child: Container(
             height: 40,
-            width: 100,
+            width:isResponsive==true?Get.width: 100,
             decoration:  BoxDecoration(
                 color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(10)
