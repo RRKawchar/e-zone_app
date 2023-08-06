@@ -16,4 +16,10 @@ static  String specificCategory(String categoryName)=>"$baseApiUrl/products/cate
 static const String addProductApi="$baseApiUrl/products";
 static String updateProductById(int id)=>"$baseApiUrl/products/$id";
 static String deleteProductById(int id)=>"$baseApiUrl/products/$id";
+
+
+/// Cart Product
+static const String cartAddApi="$baseApiUrl/carts";
+static String cartUpdate(int id)=>"$baseApiUrl/carts/$id";
+static String deleteCart(int id)=>"$baseApiUrl/carts/$id";
 }

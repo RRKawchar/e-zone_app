@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 
@@ -28,4 +29,9 @@ import 'package:flutter/material.dart';
  /// Circular Progress Indicator
  kCircularProgressIndicator(){
      return const Center(child: CircularProgressIndicator(),);
+ }
+
+ /// SnackBar
+ kSnackBar({required String message}){
+   Get.snackbar('Warning!!', message,backgroundColor: Colors.black,colorText:Colors.red,);
  }

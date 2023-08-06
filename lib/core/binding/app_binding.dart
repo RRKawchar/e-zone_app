@@ -1,3 +1,4 @@
+import 'package:e_zone/view_model/cart_view_model.dart';
 import 'package:e_zone/view_model/categories_view_model.dart';
 import 'package:e_zone/view_model/home_view_model.dart';
 import 'package:e_zone/view_model/main_view_model.dart';
@@ -13,6 +14,7 @@ class AppBindings extends Bindings{
    Get.lazyPut(() => CategoriesViewModel(),fenix: true);
    Get.lazyPut(() => SearchViewModel(),fenix: true);
    Get.lazyPut(() => ProductViewModel(),fenix: true);
+   Get.lazyPut(() => CartViewModel(),fenix: true);
   }
 
 

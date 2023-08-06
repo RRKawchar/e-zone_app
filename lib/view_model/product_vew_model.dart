@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../core/network/api_endpoint.dart';
@@ -8,7 +9,7 @@ import '../core/res/helper/helper_method.dart';
 
 class ProductViewModel extends GetxController {
   var isLoading = false.obs;
-
+  var isDeleting = <int, bool>{}.obs;
   Rx<File?> imageFile = Rx<File?>(null);
   var formKey = GlobalKey<FormState>().obs;
 
@@ -16,6 +17,8 @@ class ProductViewModel extends GetxController {
   final priceController = TextEditingController().obs;
   final descriptionController = TextEditingController().obs;
   final categoryController = TextEditingController().obs;
+
+
 
   Future<void> pickImage() async {
     try {
@@ -30,11 +33,13 @@ class ProductViewModel extends GetxController {
     }
   }
 
+  /// Product Add Method..........................
+
   Future<void> addProduct() async {
     try {
       if (imageFile.value == null) {
         kPrint("Please pick an image first!!");
-        Get.snackbar('', 'Please pick an image first!!');
+        kSnackBar(message: 'Please pick an image first!!');
         return;
       }
 
@@ -57,6 +62,55 @@ class ProductViewModel extends GetxController {
       isLoading(false);
     }
   }
+
+  /// Product Update Method..........................
+
+  Future<void> updateProduct({required int id}) async {
+    try {
+      Map<String, dynamic> body = {
+        'title': titleController.value.text,
+        'price': priceController.value.text,
+        'description': descriptionController.value.text,
+        'image': imageFile.toString(),
+        'category': descriptionController.value.text
+      };
+
+      isLoading.value = true;
+      await ApiService.handleResponse(await ApiService.updateRequest(
+          url: ApiEndpoint.updateProductById(id), body: body));
+      kPrint("Update body$body}");
+    } catch (e) {
+      kPrint(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  /// Product delete ................................
+
+  void setLoading(int id, bool value) {
+    isDeleting[id] = value;
+  }
+
+  Future<void> deleteProduct({required int id}) async {
+    try {
+     setLoading(id, true);
+      await ApiService.handleResponse(
+        await ApiService.deleteRequest(
+          url: ApiEndpoint.deleteProductById(id),
+        ),
+      );
+    } catch (e) {
+      kPrint(e.toString());
+    } finally {
+      setLoading(id, false);
+    }
+  }
+
+
+
+
+  /// Validation part.............................
 
   String? titleValidation(String? value) {
     if (value == null || value.isEmpty) {

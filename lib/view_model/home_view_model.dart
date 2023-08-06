@@ -9,15 +9,6 @@ class HomeViewModel extends GetxController {
   var productList = <ProductModel>[].obs;
   var selectedSort = 'asc'.obs;
 
-  Map<String, dynamic> body = {
-    'title': 'test product',
-    'price': 13.5,
-    'description': 'lorem ipsum set',
-    'image':
-        'https://w7.pngwing.com/pngs/724/729/png-transparent-calculator-calculator-electronics-calculator-technology-thumbnail.png',
-    'category': 'electronic'
-  };
-
   @override
   void onInit() {
     fetchProduct();

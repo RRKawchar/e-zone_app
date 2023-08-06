@@ -1,4 +1,5 @@
 import 'package:e_zone/core/res/constants/constants.dart';
+import 'package:e_zone/view/cart_screen/cart_screen.dart';
 import 'package:e_zone/view/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -58,7 +59,9 @@ class HomeAppbarWidget extends StatelessWidget {
           height: 45,
           width: 45,
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(const CartScreen());
+              },
               icon: const Icon(
                 Icons.shopping_cart_checkout_rounded,
                 size: 30,

@@ -41,8 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          //homeViewModel.addProduct();
-          Get.to(ProductAddScreen());
+          Get.to(const ProductAddScreen(),);
         },
         child: const Icon(Icons.add),
       ),

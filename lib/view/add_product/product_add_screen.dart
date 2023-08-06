@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:e_zone/core/res/components/custom_button.dart';
-import 'package:e_zone/core/res/components/custom_network_image.dart';
 import 'package:e_zone/core/res/components/custom_text.dart';
-import 'package:e_zone/core/res/helper/helper_method.dart';
 import 'package:e_zone/view/add_product/widgets/add_screen_image_widget.dart';
 import 'package:e_zone/view/add_product/widgets/form_widget.dart';
 import 'package:e_zone/view/add_product/widgets/pickImage_button_widget.dart';
@@ -96,20 +92,18 @@ class _ProductAddScreenState extends State<ProductAddScreen> {
                     ? CustomButton(
                         isResponsive: true,
                         text: 'Add',
-                        onTap: () {
+                        onTap: () async{
                           if (productViewModel.formKey.value.currentState!
                               .validate()) {
-                            productViewModel.addProduct();
+                            await productViewModel.addProduct();
                           }
                         },
                       )
                     : CustomButton(
                         isResponsive: true,
                         text: 'Update',
-                        onTap: () {
-                          // if (productViewModel.formKey.value.currentState!
-                          //     .validate()) {
-                          //   productViewModel.addProduct();
+                        onTap: () async{
+                          await productViewModel.updateProduct(id: widget.id!);
                         })
               ],
             ),

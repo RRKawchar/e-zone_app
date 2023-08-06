@@ -17,7 +17,8 @@ class ApiService {
     return response;
   }
 
-  static postRequest({required String url, required Map<String,dynamic> body}) async {
+  static postRequest(
+      {required String url, required Map<String, dynamic> body}) async {
     if (!await checkInternet) {
       throw noInternetMessage;
     }
@@ -31,6 +32,35 @@ class ApiService {
     return response;
   }
 
+  static updateRequest({
+    required String url,
+    required Map<String, dynamic> body,
+  }) async {
+    if (!await checkInternet) {
+      throw noInternetMessage;
+    }
+    var headers = {'Content-Type': 'application/json'};
+    http.Response response = await http.put(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonEncode(body),
+    );
+
+    return response;
+  }
+
+  static deleteRequest({required String url})async{
+    if(!await checkInternet){
+      throw noInternetMessage;
+    }
+
+    var headers = {'Content-Type': 'application/json'};
+
+    http.Response response=await http.delete(Uri.parse(url),headers: headers,);
+    return response;
+
+
+  }
 
 
   static handleResponse(http.Response response) async {

@@ -2,19 +2,25 @@
 
 import 'package:e_zone/core/res/components/custom_network_image.dart';
 import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/core/res/helper/helper_method.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:e_zone/view/add_product/product_add_screen.dart';
 import 'package:e_zone/view/home/widgets/rating_widget.dart';
 import 'package:e_zone/view/product_details/product_details_screen.dart';
+import 'package:e_zone/view_model/home_view_model.dart';
+import 'package:e_zone/view_model/product_vew_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SingleCardItems extends StatelessWidget {
   final ProductModel productList;
-  const SingleCardItems({
+   SingleCardItems({
     Key? key,
     required this.productList,
   }) : super(key: key);
+
+  final productViewModel=Get.find<ProductViewModel>();
+  final homeViewModel=Get.find<HomeViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,11 @@ class SingleCardItems extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              Get.to(ProductDetailsScreen(productModel: productList));
+              Get.to(
+                ProductDetailsScreen(
+                  productModel: productList,
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.all(10),
@@ -81,12 +91,23 @@ class SingleCardItems extends StatelessWidget {
                       Icons.edit,
                       size: 22,
                     )),
+
                 IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.delete,
-                      size: 22,
-                    )),
+                  onPressed: () async{
+                    await productViewModel.deleteProduct(id: productList.id!);
+
+                  },
+                  icon: Obx((){
+                    if(productViewModel.isDeleting[productList.id]??false){
+                      return kCircularProgressIndicator();
+                    }else{
+                      return const Icon(
+                        Icons.delete,
+                        size: 22,
+                      );
+                    }
+                  })
+                ),
               ],
             ),
           ),

@@ -5,17 +5,21 @@ import 'package:get/get.dart';
 
 class HomeBodyWidget extends StatelessWidget {
   final HomeViewModel homeViewModel;
-  const HomeBodyWidget({Key? key, required this.homeViewModel}) : super(key: key);
+  const HomeBodyWidget({Key? key, required this.homeViewModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Expanded(
-        child: Obx((){
-          if(homeViewModel.isLoading.value){
-            return const Center(child: CircularProgressIndicator(),);
+    return Expanded(
+      child: Obx(
+        () {
+          if (homeViewModel.isLoading.value) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
           return GridView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             itemCount: homeViewModel.productList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -24,11 +28,14 @@ class HomeBodyWidget extends StatelessWidget {
               mainAxisExtent: 350,
             ),
             itemBuilder: (BuildContext context, int index) {
-              final productList=homeViewModel.productList[index];
-              return SingleCardItems(productList: productList,);
+              final productList = homeViewModel.productList[index];
+              return SingleCardItems(
+                productList: productList,
+              );
             },
           );
-        })
+        },
+      ),
     );
   }
 }

@@ -5,9 +5,10 @@ import 'package:get/get.dart';
 class AppRoutes {
   static appRoutes() => [
         GetPage(
-            name: RoutesName.mainScreen,
-            page: () => MainScreen(),
-            transition: Transition.leftToRightWithFade,
-            transitionDuration: const Duration(milliseconds: 250))
+          name: RoutesName.mainScreen,
+          page: () => MainScreen(),
+          transition: Transition.leftToRightWithFade,
+          transitionDuration: const Duration(milliseconds: 250),
+        )
       ];
 }
