@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {

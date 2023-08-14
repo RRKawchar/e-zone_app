@@ -1,9 +1,8 @@
-import 'package:e_zone/core/res/helper/helper_method.dart';
-import 'package:e_zone/view/add_product/product_add_screen.dart';
 import 'package:e_zone/view/home/widgets/drawer_widget.dart';
 import 'package:e_zone/view/home/widgets/home_appbar_widget.dart';
 import 'package:e_zone/view/home/widgets/home_body_widget.dart';
 import 'package:e_zone/view/home/widgets/sale_view_widget.dart';
+import 'package:e_zone/view/products/add_product/product_add_screen.dart';
 import 'package:e_zone/view_model/home_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

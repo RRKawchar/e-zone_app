@@ -1,4 +1,4 @@
-import 'package:e_zone/core/res/app_color/app_color.dart';
+import 'package:e_zone/core/utils/app_color.dart';
 import 'package:e_zone/view_model/categories_view_model.dart';
 import 'package:flutter/material.dart';
 

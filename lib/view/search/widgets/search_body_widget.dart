@@ -1,6 +1,6 @@
-import 'package:e_zone/core/res/components/custom_text.dart';
-import 'package:e_zone/core/res/components/single_card_items.dart';
-import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/core/components/custom_text.dart';
+import 'package:e_zone/core/components/single_card_items.dart';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/view_model/search_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

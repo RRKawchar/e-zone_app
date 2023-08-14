@@ -1,6 +1,6 @@
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
 import 'package:e_zone/core/network/api_service.dart';
-import 'package:e_zone/core/res/helper/helper_method.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:get/get.dart';
 

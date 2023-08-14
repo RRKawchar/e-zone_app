@@ -1,16 +1,19 @@
-import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/core/components/custom_text.dart';
 import 'package:e_zone/model/product_model.dart';
-import 'package:e_zone/view/product_details/widgets/add_to_cart_button.dart';
-import 'package:e_zone/view/product_details/widgets/details_image_widget.dart';
-import 'package:e_zone/view/product_details/widgets/details_texts_widget.dart';
+import 'package:e_zone/view/products/product_details/widgets/add_to_cart_button.dart';
+import 'package:e_zone/view/products/product_details/widgets/details_image_widget.dart';
+import 'package:e_zone/view/products/product_details/widgets/details_texts_widget.dart';
 import 'package:e_zone/view_model/cart_view_model.dart';
+import 'package:e_zone/view_model/favorite_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   final ProductModel productModel;
-  const ProductDetailsScreen({Key? key, required this.productModel})
-      : super(key: key);
+  const ProductDetailsScreen({
+    Key? key,
+    required this.productModel,
+  }) : super(key: key);
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -18,6 +21,7 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final cartViewModel = Get.find<CartViewModel>();
+  final favoriteViewModel = Get.find<FavoriteViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               children: [
                 /// Here image and favorite icon button...............
 
-                DetailsImageWidget(productModel: widget.productModel),
+                DetailsImageWidget(
+                  productModel: widget.productModel,
+                  favoriteViewModel: favoriteViewModel,
+                ),
 
                 const SizedBox(
                   height: 10,

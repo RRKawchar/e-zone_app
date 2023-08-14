@@ -22,4 +22,8 @@ static String deleteProductById(int id)=>"$baseApiUrl/products/$id";
 static const String cartAddApi="$baseApiUrl/carts";
 static String cartUpdate(int id)=>"$baseApiUrl/carts/$id";
 static String deleteCart(int id)=>"$baseApiUrl/carts/$id";
+
+/// Users
+static const String allUsers="$baseApiUrl/users";
+
 }

@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
 import 'package:e_zone/core/network/api_service.dart';
-import 'package:e_zone/core/res/helper/helper_method.dart';
 import 'package:e_zone/model/cart_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +16,7 @@ class CartViewModel extends GetxController {
 
   @override
   void onInit() {
-    getFavouriteProduct();
+    getCartProduct();
     super.onInit();
   }
 
@@ -47,7 +47,7 @@ class CartViewModel extends GetxController {
     }
   }
 
-  Future<List<CartModel>> getFavouriteProduct() async {
+  Future<List<CartModel>> getCartProduct() async {
     isLoading.value = true;
     cartList.value = [];
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -64,15 +64,16 @@ class CartViewModel extends GetxController {
 
   /// Store cart product in Local DB
 
-  void saveCartItemInLocal(
-      {required int pid,
-      required String image,
-      required String description,
-      required double price,
-      required String title}) async {
+  void saveCartItemInLocal({
+    required int pid,
+    required String image,
+    required String description,
+    required double price,
+    required String title,
+  }) async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     List<CartModel> cartList = [];
-    cartList.addAll(await getFavouriteProduct());
+    cartList.addAll(await getCartProduct());
 
     bool isAvailable = false;
 
@@ -107,7 +108,7 @@ class CartViewModel extends GetxController {
           'cartItems', jsonEncode(cartList.map((e) => e.toJson()).toList()));
     }
 
-    getFavouriteProduct();
+    getCartProduct();
     kPrint(
         "Local Store Products ${preferences.getString('cartItems').toString()}");
   }
@@ -138,7 +139,7 @@ class CartViewModel extends GetxController {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString(
           "cartItems", jsonEncode(cartList.map((e) => e.toJson()).toList()));
-      getFavouriteProduct();
+      getCartProduct();
     } catch (e) {
       kPrint(e.toString());
     } finally {

@@ -1,4 +1,4 @@
-import 'package:e_zone/core/res/constants/constants.dart';
+import 'package:e_zone/core/utils/constants.dart';
 import 'package:e_zone/view/cart_screen/cart_screen.dart';
 import 'package:e_zone/view/search/search_screen.dart';
 import 'package:flutter/material.dart';

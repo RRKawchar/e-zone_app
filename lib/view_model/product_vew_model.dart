@@ -1,11 +1,11 @@
 import 'dart:io';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../core/network/api_endpoint.dart';
 import '../core/network/api_service.dart';
-import '../core/res/helper/helper_method.dart';
 
 class ProductViewModel extends GetxController {
   var isLoading = false.obs;

@@ -1,4 +1,4 @@
-import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/core/components/custom_text.dart';
 import 'package:e_zone/view/cart_screen/widgets/cart_button_total_price_widget.dart';
 import 'package:e_zone/view/cart_screen/widgets/cart_item_widget.dart';
 import 'package:e_zone/view_model/cart_view_model.dart';

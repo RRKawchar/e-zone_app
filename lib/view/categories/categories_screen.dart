@@ -1,4 +1,4 @@
-import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/view/categories/widgets/category_tabbar_widget.dart';
 import 'package:e_zone/view/categories/widgets/electronics_widget.dart';
 import 'package:e_zone/view/categories/widgets/jewelery_widget.dart';

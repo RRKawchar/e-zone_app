@@ -1,5 +1,5 @@
-import 'package:e_zone/core/res/components/custom_button.dart';
-import 'package:e_zone/core/res/helper/helper_method.dart';
+import 'package:e_zone/core/components/custom_button.dart';
+import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:e_zone/view_model/cart_view_model.dart';
 import 'package:flutter/material.dart';

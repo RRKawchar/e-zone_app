@@ -1,7 +1,7 @@
+import 'package:e_zone/core/app_theme/app_theme.dart';
 import 'package:e_zone/core/binding/app_binding.dart';
-import 'package:e_zone/core/res/app_theme/app_theme.dart';
-import 'package:e_zone/core/res/constants/constants.dart';
-import 'package:e_zone/core/res/routes/app_routes.dart';
+import 'package:e_zone/core/routes/app_routes.dart';
+import 'package:e_zone/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

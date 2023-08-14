@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:e_zone/core/res/components/custom_network_image.dart';
+import 'package:e_zone/core/components/custom_network_image.dart';
 import 'package:e_zone/view_model/product_vew_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:e_zone/core/res/components/single_card_items.dart';
+import 'package:e_zone/core/components/single_card_items.dart';
 import 'package:e_zone/view_model/categories_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

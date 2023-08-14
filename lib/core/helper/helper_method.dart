@@ -33,5 +33,5 @@ import 'package:get/get.dart';
 
  /// SnackBar
  kSnackBar({required String message}){
-   Get.snackbar('Warning!!', message,backgroundColor: Colors.black,colorText:Colors.red,);
+   Get.snackbar('Warning!!', message,backgroundColor: Colors.black,colorText:Colors.red,duration:const Duration(seconds: 1));
  }

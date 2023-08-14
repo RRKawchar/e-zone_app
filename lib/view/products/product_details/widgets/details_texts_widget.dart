@@ -1,5 +1,5 @@
-import 'package:e_zone/core/res/app_color/app_color.dart';
-import 'package:e_zone/core/res/components/custom_text.dart';
+import 'package:e_zone/core/components/custom_text.dart';
+import 'package:e_zone/core/utils/app_color.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:flutter/material.dart';
 
