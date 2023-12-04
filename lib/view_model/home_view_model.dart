@@ -1,6 +1,6 @@
 import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
-import 'package:e_zone/core/network/api_service.dart';
+import 'package:e_zone/core/network/api_handler.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:get/get.dart';
 
@@ -18,8 +18,8 @@ class HomeViewModel extends GetxController {
   void fetchProduct() async {
     try {
       isLoading(true);
-      dynamic responseBody = await ApiService.handleResponse(
-        await ApiService.getRequest(
+      dynamic responseBody = await ApiHandler.handleResponse(
+        await ApiHandler.getRequest(
           url: ApiEndpoint.sortProductApi(selectedSort.value),
         ),
       );

@@ -44,6 +44,7 @@ dependencies:
   shared_preferences: ^2.2.0
   intl: ^0.18.1
   google_maps_flutter: ^2.4.0
+  flutter_stripe: ^9.6.0
 
 dev_dependencies:
   flutter_test:

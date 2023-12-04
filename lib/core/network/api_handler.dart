@@ -1,9 +1,10 @@
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:http/http.dart' as http;
 
-class ApiService {
+class ApiHandler {
   static var noInternetMessage = "Please check your connection!";
 
   static getRequest({required String url}) async {

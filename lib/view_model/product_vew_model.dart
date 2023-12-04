@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../core/network/api_endpoint.dart';
-import '../core/network/api_service.dart';
+import '../core/network/api_handler.dart';
 
 class ProductViewModel extends GetxController {
   var isLoading = false.obs;
@@ -52,7 +52,7 @@ class ProductViewModel extends GetxController {
       };
 
       isLoading(true);
-      await ApiService.handleResponse(await ApiService.postRequest(
+      await ApiHandler.handleResponse(await ApiHandler.postRequest(
           url: ApiEndpoint.addProductApi, body: body));
       kPrint("My Body $body");
     } catch (e) {
@@ -76,7 +76,7 @@ class ProductViewModel extends GetxController {
       };
 
       isLoading.value = true;
-      await ApiService.handleResponse(await ApiService.updateRequest(
+      await ApiHandler.handleResponse(await ApiHandler.updateRequest(
           url: ApiEndpoint.updateProductById(id), body: body));
       kPrint("Update body$body}");
     } catch (e) {
@@ -95,8 +95,8 @@ class ProductViewModel extends GetxController {
   Future<void> deleteProduct({required int id}) async {
     try {
      setLoading(id, true);
-      await ApiService.handleResponse(
-        await ApiService.deleteRequest(
+      await ApiHandler.handleResponse(
+        await ApiHandler.deleteRequest(
           url: ApiEndpoint.deleteProductById(id),
         ),
       );

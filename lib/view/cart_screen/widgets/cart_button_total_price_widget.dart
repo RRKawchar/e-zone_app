@@ -1,12 +1,25 @@
+import 'dart:convert';
+
 import 'package:e_zone/core/components/custom_button.dart';
 import 'package:e_zone/core/components/custom_text.dart';
+import 'package:e_zone/core/services/payment_service.dart';
+import 'package:e_zone/core/utils/constants.dart';
 import 'package:e_zone/view_model/cart_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart'as http;
 
-class CartButtonTotalPriceWidget extends StatelessWidget {
+class CartButtonTotalPriceWidget extends StatefulWidget {
   final CartViewModel cartViewModel;
   const CartButtonTotalPriceWidget({super.key, required this.cartViewModel});
+
+  @override
+  State<CartButtonTotalPriceWidget> createState() => _CartButtonTotalPriceWidgetState();
+}
+
+class _CartButtonTotalPriceWidgetState extends State<CartButtonTotalPriceWidget> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +30,7 @@ class CartButtonTotalPriceWidget extends StatelessWidget {
           Obx(
                 () => CustomText(
               text:
-              "Total : \$${cartViewModel.calculateTotalPrice().toStringAsFixed(1)}",
+              "Total : \$${widget.cartViewModel.calculateTotalPrice().toStringAsFixed(1)}",
               size: 18,
               color: Colors.red,
               fontWeight: FontWeight.bold,
@@ -25,7 +38,10 @@ class CartButtonTotalPriceWidget extends StatelessWidget {
           ),
           Expanded(
               child: CustomButton(
-                onTap: () {},
+                onTap: () {
+                  double totalPrice = widget.cartViewModel.calculateTotalPrice();
+                  PaymentService.makePayment(context, totalPrice);
+                },
                 text: 'Checkout',
                 isResponsive: true,
               )),
@@ -33,4 +49,5 @@ class CartButtonTotalPriceWidget extends StatelessWidget {
       ),
     );
   }
+
 }

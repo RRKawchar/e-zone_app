@@ -1,6 +1,6 @@
 import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
-import 'package:e_zone/core/network/api_service.dart';
+import 'package:e_zone/core/network/api_handler.dart';
 import 'package:e_zone/model/user_model.dart';
 import 'package:get/get.dart';
 
@@ -17,8 +17,8 @@ class UserViewModel extends GetxController {
   Future<void> getUsers() async {
     try {
       isLoading(true);
-      dynamic responseBody = await ApiService.handleResponse(
-        await ApiService.getRequest(url: ApiEndpoint.allUsers),
+      dynamic responseBody = await ApiHandler.handleResponse(
+        await ApiHandler.getRequest(url: ApiEndpoint.allUsers),
       );
       if (responseBody != null) {
         for (var user in responseBody) {

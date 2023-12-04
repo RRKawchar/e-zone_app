@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
-import 'package:e_zone/core/network/api_service.dart';
+import 'package:e_zone/core/network/api_handler.dart';
 import 'package:e_zone/model/cart_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -34,8 +34,8 @@ class CartViewModel extends GetxController {
     try {
       isLoading.value = true;
 
-      await ApiService.handleResponse(
-        await ApiService.postRequest(
+      await ApiHandler.handleResponse(
+        await ApiHandler.postRequest(
           url: ApiEndpoint.cartAddApi,
           body: cartModel.toJson(),
         ),
@@ -145,6 +145,14 @@ class CartViewModel extends GetxController {
     } finally {
       setLoading(index, false);
     }
+  }
+
+
+  removeAllCartItem()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('cartItems');
+    getCartProduct();
+
   }
 
   /// Total Cart Price......................

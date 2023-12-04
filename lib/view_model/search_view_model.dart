@@ -1,6 +1,6 @@
 import 'package:e_zone/core/helper/helper_method.dart';
 import 'package:e_zone/core/network/api_endpoint.dart';
-import 'package:e_zone/core/network/api_service.dart';
+import 'package:e_zone/core/network/api_handler.dart';
 import 'package:e_zone/model/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -28,7 +28,7 @@ class SearchViewModel extends GetxController {
     try {
       isLoading(true);
       dynamic responseBody =
-          await ApiService.handleResponse(await ApiService.getRequest(
+          await ApiHandler.handleResponse(await ApiHandler.getRequest(
         url: ApiEndpoint.limitProductApi(limit),
       ));
 
@@ -52,8 +52,8 @@ class SearchViewModel extends GetxController {
   void fetchSearchProduct(int id) async {
     try {
       isLoading(true);
-      dynamic responseBody = await ApiService.handleResponse(
-          await ApiService.getRequest(url: ApiEndpoint.searchByProductId(id)));
+      dynamic responseBody = await ApiHandler.handleResponse(
+          await ApiHandler.getRequest(url: ApiEndpoint.searchByProductId(id)));
 
       if (responseBody != null) {
         searchList.value = [];
